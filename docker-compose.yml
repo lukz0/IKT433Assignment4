@@ -1,0 +1,20 @@
+services:
+  data_push:
+    build: ./data_push
+    depends_on:
+      - broker
+    environment: &ENV
+      MAIN_EXCHANGE_NAME: Exchange
+      RABBITMQ_HOST: broker
+      PROCESS_QUEUE_NAME: process_ongoing
+      TARGET_WIDTH: 224
+      TARGET_HEIGHT: 224
+  worker:
+    build: ./worker
+    depends_on:
+      - broker
+    environment: *ENV
+  broker:
+    image: rabbitmq:3-alpine
+    ports:
+      - 5673:5673
