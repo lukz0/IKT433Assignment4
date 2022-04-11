@@ -17,4 +17,4 @@ services:
   broker:
     image: rabbitmq:3-alpine
     ports:
-      - 5673:5673
+      - 5672:5672

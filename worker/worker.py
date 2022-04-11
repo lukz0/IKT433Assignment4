@@ -39,9 +39,9 @@ def callback(chan, method, properties, body):
     img_size = body['img_size']
     img = Image.frombytes(mode=img_mode, size=img_size, data=body['img'])
     label = body['label']
-    if headers.get('current_dimensions', 'unknown') != f'{TARGET_WIDTH}x{TARGET_HEIGHT}':
+    if headers.get('is_resized', 'false') != 'true':
         img = resize_img(img)
-        headers['current_dimensions'] = f'{TARGET_WIDTH}x{TARGET_HEIGHT}'
+        headers['is_resized'] = 'true'
     if headers.get('is_rotated', 'false') != 'true':
         img = rotate_img(img)
         headers['is_rotated'] = 'true'

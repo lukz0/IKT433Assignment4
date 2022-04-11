@@ -43,8 +43,7 @@ def send_file_loop(
                         'is_rotated': 'false',
                         'is_grayscale': 'false',
                         'is_mirrored': 'false',
-                        'is_rotated': 'false',
-                        'current_dimensions': f'{img.width}x{img.height}'
+                        'is_resized': 'false'
                     }
                 )
             )
